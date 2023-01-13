@@ -39,6 +39,7 @@ export default function App({Component, pageProps} : AppProps){
                        font-size: 100%;
                        font: inherit;
                        vertical-align: baseline;
+                       font-family : Helvetica;
                      }
                      /* HTML5 display-role reset for older browsers */
                      article, aside, details, figcaption, figure,
