@@ -15,6 +15,7 @@ const Container = styled.nav`
     left: 0;
     background-color: rgba( 255, 255, 255, 0.5 );
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.15);
+    z-index: 10;
 `
 
 const Logo = styled(Image)`

@@ -4,7 +4,7 @@ import logo from "/public/image/logo_white.png"
 
 const Wrapper = styled.div`
     width: 100%;
-    height: 125px;
+    height: 18vh;
     padding: 0px 120px;
     background-color: #1B1B1B;
     display: flex;
@@ -35,7 +35,8 @@ const Right = styled.div`
 const Info = styled.div`
     display: flex;
     flex-direction: column;
-
+    height: 60px;
+    justify-content: space-between;
 `
 
 const Item = styled.div`
