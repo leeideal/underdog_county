@@ -10,6 +10,7 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 1024px;
 `
 
 const Container = styled.div`

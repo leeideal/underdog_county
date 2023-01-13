@@ -16,6 +16,7 @@ import "swiper/css/pagination";
 const Container = styled.div`
     width: 100%;
     height: auto;
+    min-width: 1024px;
 `
 
 const SwiperBox = styled(Swiper)`

@@ -1,15 +1,5 @@
 import Layout from "@/components/Layout"
 import type { AppProps } from "next/app"
-import css from "styled-jsx/css"
-
-const style = css`
-    .conatiner{
-        display: flex;
-        flex-direction: column;
-        min-width: 1024px;
-        max-width: 1260px;
-    }
-`
 
 export default function App({Component, pageProps} : AppProps){
     return(
