@@ -12,7 +12,7 @@ const Container = styled.div`
     height: 82vh;
     display: flex;
     min-width: 1024px;
-    max-width: 1700px;
+    max-width: 1800px;
 `
 
 const Item = styled.div`
@@ -63,12 +63,12 @@ export default function Portfolio(){
     const router = useRouter();
     const onclick = (id : number) => {
         router.push({
-            pathname : "/portfolio/collaborations",
+            pathname : "/portfolio/artworks",
             query : {
                 id
             }
         },
-        "/portfolil/collaborations")
+        "/portfolil/artworks")
     }
     return(
         <Container>

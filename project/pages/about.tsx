@@ -34,7 +34,7 @@ const Container = styled.div`
     flex-direction: column;
     margin-top: 16vh;
     min-width: 1024px;
-    max-width: 1700px;
+    max-width: 1800px;
     overflow-y: scroll;
 `
 

@@ -9,7 +9,7 @@ const Container = styled.div`
     display: flex;
     margin-top: 16vh;
     min-width: 1024px;
-    max-width: 1700px;
+    max-width: 1800px;
     overflow-y: scroll;
     justify-content: space-between;
 `

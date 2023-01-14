@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -9,15 +8,13 @@ display: flex;
 flex-direction: column;
 margin-top: 16vh;
 min-width: 1024px;
-max-width: 1700px;
+max-width: 1800px;
 `
 
 export default function Collaborations(){
-    const router = useRouter();
-    console.log(router.query);
     return(
         <Container>
-
+            
         </Container>
     )
 }

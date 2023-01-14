@@ -39,18 +39,16 @@ const Item = styled(Link)<{isActive : boolean, itemName? : string}>`
         opacity: 1;
         transition: all 0.45s;
     }
-    position: relative;
     ${props => (props.itemName === 'drop' && `&:hover ul{ display: block; }`)}; //호버시 드롭다운
-    padding-bottom: 4px;
 `
 
 const DropDown = styled.ul`
     display: none;
     position: absolute;
-    top:22px;
-    left:-27px;
+    top: 19px;
+    left:-25px;
     background-color: #ffffff;
-    width: 110px;
+    width: 106px;
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     text-align: center;
@@ -75,6 +73,16 @@ const DropDownList = styled.li`
     }
 `
 
+const DropBox= styled.div`
+    position: relative;
+    font-weight: 100;
+    &:hover{
+        & ul{display: block;}
+        & a{opacity: 1;
+        transition: all 0.45s;}
+    }
+`
+
 
 
 export default function NavBar(){
@@ -86,12 +94,15 @@ export default function NavBar(){
             </Link>
             <Menu>
                 <Item isActive={router.pathname === "/about"} href="/about">about</Item>
-                <Item isActive={router.pathname === "/portfolio" ||  router.pathname === "/portfolio/artworks" ||  router.pathname === "/portfolio/collaborations"} itemName='drop' href="/portfolio/">portfolio
+                <DropBox>
+                    <Item isActive={router.pathname === "/portfolio" ||  router.pathname === "/portfolio/artworks" ||  router.pathname === "/portfolio/collaborations"} itemName='drop' href="/portfolio">
+                        portfolio
+                    </Item>
                     <DropDown>
                         <DropDownList onClick={()=>router.push("/portfolio/collaborations")} >collaborations</DropDownList>
                         <DropDownList onClick={()=>router.push("/portfolio/artworks")}>artworks</DropDownList>
                     </DropDown>
-                </Item>
+                </DropBox>
                 <Item isActive={router.pathname === "/contact"} href="/contact">contact</Item>
             </Menu>
         </Container>
