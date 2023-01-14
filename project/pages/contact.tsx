@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
@@ -170,18 +171,21 @@ interface IForm{
 }
 
 export default function Contact(){
+    // 나머지 작업
+    const router = useRouter();
+
     // 문의 전송 관련
     const {register, handleSubmit, formState} = useForm<IForm>();
     const handleValid = (data : IForm) => {
-        
+        router.push({
+            pathname: '/',
+        })
     }
 
     const handleFaile = () => {
         window.alert("입력한 내용을 다시 확인해주세요!");
     }
 
-    // 나머지 작업
-    
     
     return(
         <Container>

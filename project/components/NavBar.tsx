@@ -34,10 +34,10 @@ const Item = styled(Link)<{isActive : boolean, itemName? : string}>`
     }
     border-bottom: ${props => props.isActive ? "1.5px solid black" : null};
     opacity: ${props => props.isActive ? 1 : 0.45};
-    transition: all 0.8s;
+    transition: all 0.45s;
     &:hover{
         opacity: 1;
-        transition: all 0.8s;
+        transition: all 0.45s;
     }
     position: relative;
     ${props => (props.itemName === 'drop' && `&:hover ul{ display: block; }`)}; //호버시 드롭다운
@@ -47,7 +47,7 @@ const Item = styled(Link)<{isActive : boolean, itemName? : string}>`
 const DropDown = styled.ul`
     display: none;
     position: absolute;
-    top:24px;
+    top:22px;
     left:-27px;
     background-color: #ffffff;
     width: 110px;
@@ -61,6 +61,7 @@ const DropDown = styled.ul`
 
 const DropDownList = styled.li`
     padding: 12px 10px;
+    cursor: pointer;
     &:first-child{
         padding-top: 14px;
     }
@@ -85,10 +86,10 @@ export default function NavBar(){
             </Link>
             <Menu>
                 <Item isActive={router.pathname === "/about"} href="/about">about</Item>
-                <Item isActive={router.pathname === "/"} itemName='drop' href="/">portfolio
+                <Item isActive={router.pathname === "/portfolio" ||  router.pathname === "/portfolio/artworks" ||  router.pathname === "/portfolio/collaborations"} itemName='drop' href="/portfolio/">portfolio
                     <DropDown>
-                        <DropDownList >collaborations</DropDownList>
-                        <DropDownList >artworks</DropDownList>
+                        <DropDownList onClick={()=>router.push("/portfolio/collaborations")} >collaborations</DropDownList>
+                        <DropDownList onClick={()=>router.push("/portfolio/artworks")}>artworks</DropDownList>
                     </DropDown>
                 </Item>
                 <Item isActive={router.pathname === "/contact"} href="/contact">contact</Item>
