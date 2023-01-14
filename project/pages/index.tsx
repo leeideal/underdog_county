@@ -16,11 +16,15 @@ import "swiper/css/pagination";
 const Container = styled.div`
     width: 100%;
     height: auto;
-    min-width: 1024px;
+    min-width: 760px;
 `
 
 const SwiperBox = styled(Swiper)`
     height: 82vh;
+`
+
+const Img = styled(Image)`
+    padding : 0 12%;
 `
 
 
@@ -43,12 +47,12 @@ export default function Main(){
                 modules={[Autoplay, Mousewheel, Pagination]}
                 className="mySwiper"
             >
-                <SwiperSlide><Image src={img1} alt="img1" layout='fill' objectFit="cover"/></SwiperSlide>
+                <SwiperSlide><Image src={img1} alt="img1" fill/></SwiperSlide>
                 <SwiperSlide>
-                <Image src={img2} alt="img2" layout='fill' objectFit="cover"/></SwiperSlide>
-                <SwiperSlide><Image src={img3} alt="img3" layout='fill' objectFit="cover"/></SwiperSlide>
-                <SwiperSlide><Image src={img4} alt="img4" layout='fill' objectFit="cover"/></SwiperSlide>
-                <SwiperSlide><Image src={img5} alt="img5" layout='fill' objectFit="cover"/></SwiperSlide>
+                <Img src={img2} alt="img2" fill/></SwiperSlide>
+                <SwiperSlide><Image src={img3} alt="img3" fill/></SwiperSlide>
+                <SwiperSlide><Img src={img4} alt="img4" fill/></SwiperSlide>
+                <SwiperSlide><Img src={img5} alt="img5" fill/></SwiperSlide>
             </SwiperBox>
         </Container>
     )

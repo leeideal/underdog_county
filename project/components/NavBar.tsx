@@ -27,7 +27,7 @@ const Menu = styled.div`
     align-items: center;
 `
 
-const Item = styled(Link)<{isActive : boolean}>`
+const Item = styled(Link)<{isActive : boolean, itemName? : string}>`
     font-weight: 100;
     &:not(:last-child){
         margin-right: 50px;
@@ -40,27 +40,37 @@ const Item = styled(Link)<{isActive : boolean}>`
         transition: all 0.8s;
     }
     position: relative;
+    ${props => (props.itemName === 'drop' && `&:hover ul{ display: block; }`)}; //호버시 드롭다운
+    padding-bottom: 4px;
 `
 
 const DropDown = styled.ul`
     display: none;
     position: absolute;
-    top: 30px;
-    left:20px;
+    top:24px;
+    left:-27px;
     background-color: #ffffff;
     width: 110px;
-    margin-top: 16px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
     text-align: center;
+    &:hover{
+        display: block;
+    }
 `
 
 const DropDownList = styled.li`
-    padding: 12px 16px;
+    padding: 12px 10px;
+    &:first-child{
+        padding-top: 14px;
+    }
+    &:last-child{
+        padding-bottom: 14px;
+    }
     font-size:13px;
     &:hover {
         background-color: #f5f5f5;
-        border-radius: 5px;
+        border-radius: 3px;
     }
 `
 
@@ -75,10 +85,10 @@ export default function NavBar(){
             </Link>
             <Menu>
                 <Item isActive={router.pathname === "/about"} href="/about">about</Item>
-                <Item isActive={router.pathname === "/"} href="/">portfolio
+                <Item isActive={router.pathname === "/"} itemName='drop' href="/">portfolio
                     <DropDown>
-                        <DropDownList >감정 비우기</DropDownList>
-                        <DropDownList >감정 나누기</DropDownList>
+                        <DropDownList >collaborations</DropDownList>
+                        <DropDownList >artworks</DropDownList>
                     </DropDown>
                 </Item>
                 <Item isActive={router.pathname === "/contact"} href="/contact">contact</Item>
