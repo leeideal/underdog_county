@@ -2,6 +2,8 @@ import Link from "next/link";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 
 const Container = styled.div`
     width: 100vw;
@@ -55,10 +57,18 @@ const Overlay = styled(motion.div)`
 
 const BigBox = styled(motion.div)`
     width: 50vw;
-    height: 70vh;
-    background-color: #B3EDE1;
+    height: 80vh;
     border-radius: 20px;
     position: relative;
+    background-color: white;
+`
+
+const XMark = styled(FontAwesomeIcon)`
+    font-size: 24px;
+    position: absolute;
+    top:15px;
+    right: 15px;
+    cursor: pointer;
 `
 
 const test = [
@@ -67,42 +77,45 @@ const test = [
         name : "서희찬",
         email : "dguLikeLion@likelion.com",
         phoneNumber : "010-1234-5678",
-        contest : "하하"
+        content : "하하"
     },
     {
         id : 2,
         name : "서희찬",
         email : "dguLikeLion@likelion.com",
         phoneNumber : "010-1234-5678",
-        contest : "하하"
+        content : "하하"
     },
     {
         id : 3,
         name : "서희찬",
         email : "dguLikeLion@likelion.com",
         phoneNumber : "010-1234-5678",
-        contest : "하하"
+        content : "하하"
     }
 ]
 
 interface IData{
     id : number;
     name : string;
-    phoneNumber : string;
     email : string;
+    phoneNumber : string;
     content : string;
 }
 
 export default function Application(){
     const [clicked, setClicked] = useState(false);
     const [clickedInfo, setClickedInfo] = useState<IData | null>(null);
-
+    const onclick = (data : IData) => {
+        setClicked(prev => !prev);
+        setClickedInfo(data);
+    }
     return(
         <Container>
             <Title>신청서 전체 조회</Title>
             <Box>
                 {test.map(prev => (
-                    <Item onClick={()=>setClickedInfo(prev=>prev)}>
+                    <Item key={prev.id} onClick={()=>onclick(prev)}>
                         <div>
                             {prev.id}
                         </div>
@@ -113,7 +126,7 @@ export default function Application(){
                             {prev.email}
                         </div>
                         <div>
-                            {prev.phoneNumber}
+                            {prev.phoneNumber}{prev.content}
                         </div>
                     </Item>
                 ))}
@@ -126,6 +139,7 @@ export default function Application(){
                         exit={{ opacity: 0 }}
                     >
                         <BigBox>
+                            <XMark onClick = {()=>setClicked(prev=>!prev)} icon={faX} />
                             {clickedInfo?.id}
                         </BigBox>
                     </Overlay> : null}
