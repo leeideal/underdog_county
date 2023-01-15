@@ -71,6 +71,14 @@ const XMark = styled(FontAwesomeIcon)`
     cursor: pointer;
 `
 
+const GoBack =styled(Link)`
+    background-color: black;
+    color : white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin-top: 1vh;
+`
+
 const test = [
     {
         id : 1,
@@ -131,6 +139,9 @@ export default function Application(){
                     </Item>
                 ))}
             </Box>
+            <GoBack href="/admine/home">
+                관리가 페이지로 돌아가기
+            </GoBack>
             {/* 모달창 */}
             <AnimatePresence>{clicked ? 
                     <Overlay 
