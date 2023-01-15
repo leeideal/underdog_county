@@ -64,8 +64,9 @@ export default function Artworks(){
     const router = useRouter();
 
     // 어떤 카테고리 선택
-    const num = router.query.id ? router.query.id : 1;
+    const num = router.query.id === undefined ? 1 : router.query.id ;
     const [cate, setCate] = useState(num);
+    console.log(cate);
     const cateClick = (id : number) => {
         setCate(id);
     }
@@ -74,7 +75,7 @@ export default function Artworks(){
         <Container>
             <Category>
                 {cateList.map(prev => (
-                    <CateItem onClick={()=>cateClick(prev.id)} key={prev.id} isActive={cate === prev.id}>
+                    <CateItem onClick={()=>cateClick(prev.id)} key={prev.id} isActive={prev.id == cate}>
                         {prev.name}
                     </CateItem>
                 ))}
