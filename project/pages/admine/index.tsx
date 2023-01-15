@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { useForm } from 'react-hook-form';
+import { API } from "@/api";
+import { useRouter } from "next/router";
 
 const Container = styled.div`
     width: 100vw;
@@ -57,18 +59,27 @@ interface ILog{
 }
 
 export default function Admine(){
+    const router = useRouter();
     const {register, handleSubmit} = useForm<ILog>();
     const onValid = async(data : ILog) => {
         const result = {
-            "username": data.id,
+            "memberId": data.id,
             "password": data.pw,
         };
         try{
-            
+            await API.post('/login', result).then(
+                response => {
+                    console.log(response)
+                }
+            )
+            router.push({
+                pathname: '/admine/home',
+            })
         } catch(error){
             console.log(error)
         }
     }
+
     return(
         <Container>
             <Title>관리자 페이지 로그인</Title>

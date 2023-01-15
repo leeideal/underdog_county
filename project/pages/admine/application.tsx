@@ -1,9 +1,10 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import { LogAPI } from "@/api";
 
 const Container = styled.div`
     width: 100vw;
@@ -79,30 +80,6 @@ const GoBack =styled(Link)`
     margin-top: 1vh;
 `
 
-const test = [
-    {
-        id : 1,
-        name : "서희찬",
-        email : "dguLikeLion@likelion.com",
-        phoneNumber : "010-1234-5678",
-        content : "하하"
-    },
-    {
-        id : 2,
-        name : "서희찬",
-        email : "dguLikeLion@likelion.com",
-        phoneNumber : "010-1234-5678",
-        content : "하하"
-    },
-    {
-        id : 3,
-        name : "서희찬",
-        email : "dguLikeLion@likelion.com",
-        phoneNumber : "010-1234-5678",
-        content : "하하"
-    }
-]
-
 interface IData{
     id : number;
     name : string;
@@ -114,15 +91,31 @@ interface IData{
 export default function Application(){
     const [clicked, setClicked] = useState(false);
     const [clickedInfo, setClickedInfo] = useState<IData | null>(null);
+    const [allData, setAllData] = useState<IData[]>([]);
     const onclick = (data : IData) => {
         setClicked(prev => !prev);
         setClickedInfo(data);
     }
+
+    // 전체 데이터 요청
+    const getData = async() => {
+        try{
+            const data = await LogAPI.get("/contact/application");
+            setAllData(data.data)
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    useEffect(()=>{
+        getData();
+    },[])
+
     return(
         <Container>
             <Title>신청서 전체 조회</Title>
             <Box>
-                {test.map(prev => (
+                {allData?.map(prev => (
                     <Item key={prev.id} onClick={()=>onclick(prev)}>
                         <div>
                             {prev.id}

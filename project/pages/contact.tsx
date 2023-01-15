@@ -1,3 +1,4 @@
+import { API } from "@/api";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
@@ -176,10 +177,25 @@ export default function Contact(){
 
     // 문의 전송 관련
     const {register, handleSubmit, formState} = useForm<IForm>();
-    const handleValid = (data : IForm) => {
-        router.push({
-            pathname: '/',
-        })
+    const handleValid = async(data : IForm) => {
+        const result = {
+            "name" : data.name,
+            "email" : data.mail,
+            "phoneNumber" : data.phone,
+            "contents" : data.content,
+        }
+        try{
+            await API.post('/contact/application', result).then(
+                response => {
+                    console.log(response);
+                }
+            )
+            router.push({
+                pathname: '/',
+            })
+        }catch(error){
+            console.log(error)
+        }
     }
 
     const handleFaile = () => {
