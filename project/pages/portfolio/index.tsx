@@ -62,13 +62,17 @@ const Info = styled.div`
 export default function Portfolio(){
     const router = useRouter();
     const onclick = (id : number) => {
-        router.push({
-            pathname : "/portfolio/artworks",
-            query : {
-                id
-            }
-        },
-        "/portfolil/artworks")
+        if(id === 3){
+            router.push("/video");
+        }else{
+            router.push({
+                pathname : "/portfolio/artworks",
+                query : {
+                    id
+                }
+            },
+            "/portfolil/artworks")
+        }
     }
     return(
         <Container>

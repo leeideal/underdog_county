@@ -62,6 +62,13 @@ const BigBox = styled(motion.div)`
     border-radius: 20px;
     position: relative;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    div{
+        margin: 20px 0px;
+    }
 `
 
 const XMark = styled(FontAwesomeIcon)`
@@ -80,12 +87,21 @@ const GoBack =styled(Link)`
     margin-top: 1vh;
 `
 
+const DeleteBtn = styled.div`
+    margin-top: 10px;
+    cursor: pointer;
+    color : white;
+    background-color: black;
+    padding: 10px;
+    border-radius: 10px;
+`
+
 interface IData{
     id : number;
     name : string;
     email : string;
     phoneNumber : string;
-    content : string;
+    contents : string;
 }
 
 export default function Application(){
@@ -107,9 +123,21 @@ export default function Application(){
         }
     }
 
+    // 지원서삭제
+    const deleteClick = async(id : number) => {
+        await LogAPI.delete(`/contact/application/${id}`).then(
+            response => {
+                window.alert("삭제되었습니다!(1분이내로 삭제)");
+            }
+        )
+        setClicked(prev=>!prev)
+    }
+
     useEffect(()=>{
         getData();
     },[])
+
+    console.log(clickedInfo)
 
     return(
         <Container>
@@ -127,7 +155,7 @@ export default function Application(){
                             {prev.email}
                         </div>
                         <div>
-                            {prev.phoneNumber}{prev.content}
+                            {prev.phoneNumber}
                         </div>
                     </Item>
                 ))}
@@ -144,7 +172,24 @@ export default function Application(){
                     >
                         <BigBox>
                             <XMark onClick = {()=>setClicked(prev=>!prev)} icon={faX} />
-                            {clickedInfo?.id}
+                            <div>
+                                문의 번호 : {clickedInfo?.id}
+                            </div>
+                            <div>
+                                문의자 이름 : {clickedInfo?.name}
+                            </div>
+                            <div>
+                                문의자 이메일 : {clickedInfo?.email}
+                            </div>
+                            <div>
+                                문의자 전화번호 : {clickedInfo?.phoneNumber}
+                            </div>
+                            <div>
+                                문의 내용 : {clickedInfo?.contents}
+                            </div>
+                            <DeleteBtn onClick = {() => deleteClick(clickedInfo!.id)}>
+                                신청서 삭제하기
+                            </DeleteBtn>
                         </BigBox>
                     </Overlay> : null}
             </AnimatePresence>

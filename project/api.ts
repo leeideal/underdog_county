@@ -10,12 +10,24 @@ export const API = axios.create({
 
 
 // 로그인이 되어있는 경우 사용하는 API(토큰이 있는경우 요청)
+const accessToken = typeof window === 'undefined' ? null : sessionStorage.getItem('token');
 
 export const LogAPI = axios.create({
     baseURL: ``,
     headers:{
         "Content-Type": "application/json",
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZW1iZXJfQSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzM4NzIxMjl9.951_CmrSR852Wud0AHyE9fcjs5iRD_O6G-3xCjXyC1s`,
+        Authorization: `Bearer ${accessToken}`,
+        //`${localStorage.getItem('token') === null ? sessionStorage.getItem("token") : localStorage.getItem('token')}`
+    },
+});
+
+
+// 로그인 되어있는 경우 사진 보낼 때 API
+export const LogImgAPI = axios.create({
+    baseURL: ``,
+    headers:{
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${accessToken}`,
         //`${localStorage.getItem('token') === null ? sessionStorage.getItem("token") : localStorage.getItem('token')}`
     },
 });

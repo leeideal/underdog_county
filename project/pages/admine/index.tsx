@@ -69,7 +69,8 @@ export default function Admine(){
         try{
             await API.post('/login', result).then(
                 response => {
-                    console.log(response)
+                    const acToken =response.data.accessToken
+                    sessionStorage.setItem('token', acToken);
                 }
             )
             router.push({
