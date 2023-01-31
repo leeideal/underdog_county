@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
-import { LogAPI } from "@/api";
+import { LogAPI } from "../../api";
 
 const Container = styled.div`
     width: 100vw;
