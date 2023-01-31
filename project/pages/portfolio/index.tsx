@@ -71,7 +71,7 @@ export default function Portfolio(){
                     id
                 }
             },
-            "/portfolil/artworks")
+            "/portfolio/artworks")
         }
     }
     return(
