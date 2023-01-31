@@ -1,4 +1,5 @@
-const APIURL = `${process.env.API_KEY}`;
+const APIUR = `${process.env.API_KEY}`;
+const APIURL = "52.79.191.113"
 
 module.exports = {
   webpack: (config) => {
