@@ -71,7 +71,7 @@ export default function Admine(){
                 response => {
                     const acToken =response.data.accessToken
                     sessionStorage.setItem('token', acToken);
-                    window.location.reload();
+                    sessionStorage.setItem('ct', "1");
                 }
             )
             router.push({

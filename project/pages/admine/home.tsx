@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -34,6 +35,12 @@ const Title = styled.h1`
 `
 
 export default function Admine(){
+    if(typeof window !== 'undefined'){
+        if(sessionStorage.getItem("ct") === "1"){
+            sessionStorage.setItem("ct", "999");
+            window.location.reload();
+        }
+    }
     return(
         <Container>
             <Title>관리자 페이지</Title>
