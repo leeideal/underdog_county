@@ -76,6 +76,7 @@ export default function Admine(){
             router.push({
                 pathname: '/admine/home',
             })
+            window.location.reload();
         } catch(error){
             window.alert("문제가 발생하였습니다. 연결상태를 확인해주세요.")
             //console.log(error)
