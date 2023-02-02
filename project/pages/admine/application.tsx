@@ -161,7 +161,7 @@ export default function Application(){
                 ))}
             </Box>
             <GoBack href="/admine/home">
-                관리가 페이지로 돌아가기
+                관리자 페이지로 돌아가기
             </GoBack>
             {/* 모달창 */}
             <AnimatePresence>{clicked ? 

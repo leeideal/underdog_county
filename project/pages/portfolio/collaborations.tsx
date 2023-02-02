@@ -73,9 +73,19 @@ const Content = styled.div`
 const MoreInfo =styled(Link)`
     background-color: black;
     color : white;
-    padding: 15px 30px;
+    padding: 12px 22px;
     border-radius: 5px;
+    transition: all 0.4s;
+    border : none;
+    &:hover{
+        background-color: white;
+        color : black;
+        transition: all 0.4s;
+        border: 0.6px solid black;
+    }
 `
+
+
 
 interface IData{
     id : number,
@@ -119,7 +129,7 @@ export default function Collaborations(){
                                 {i.contents}
                             </Content>
                             <MoreInfo href={`https://${i.instarGram}`}>
-                                More
+                                Artist Page
                             </MoreInfo>
                         </Detail>
                     </Item>
