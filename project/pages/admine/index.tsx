@@ -77,7 +77,8 @@ export default function Admine(){
                 pathname: '/admine/home',
             })
         } catch(error){
-            console.log(error)
+            window.alert("문제가 발생하였습니다. 연결상태를 확인해주세요.")
+            //console.log(error)
         }
     }
 

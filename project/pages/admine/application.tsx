@@ -119,7 +119,8 @@ export default function Application(){
             const data = await LogAPI.get("/contact/application");
             setAllData(data.data)
         }catch(error){
-            console.log(error)
+            window.alert("문제가 발생하였습니다. 연결상태를 확인해주세요.")
+            //console.log(error)
         }
     }
 
@@ -137,7 +138,6 @@ export default function Application(){
         getData();
     },[])
 
-    console.log(clickedInfo)
 
     return(
         <Container>

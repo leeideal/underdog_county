@@ -187,14 +187,16 @@ export default function Contact(){
         try{
             await API.post('/contact/application', result).then(
                 response => {
-                    console.log(response);
+                    //console.log(response);
+                    window.alert("문의가 접수되었습니다.(문의한 이메일로 확인부탁드립니다.)")
                 }
             )
             router.push({
                 pathname: '/',
             })
         }catch(error){
-            console.log(error)
+            //console.log(error)
+            window.alert("문제가 발생하였습니다. 연결상태를 확인해주세요.")
         }
     }
 

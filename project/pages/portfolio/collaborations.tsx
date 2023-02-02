@@ -105,7 +105,8 @@ export default function Collaborations(){
             const data = await API.get("/artists");
             setAllData(data.data)
         }catch(error){
-            console.log(error)
+            //console.log(error)
+            window.alert("문제가 발생하였습니다. 연결상태를 확인해주세요.")
         }
     }
 

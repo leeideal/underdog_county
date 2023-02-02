@@ -75,7 +75,8 @@ export default function Artworks(){
                 const data = await API.get(`/category/${num}`);
                 setAllData(data.data)
             }catch(error){
-                console.log(error)
+                window.alert("문제가 발생하였습니다. 연결상태를 확인해주세요.")
+                //console.log(error)
             }
         }
     }
@@ -88,7 +89,8 @@ export default function Artworks(){
             const data = await API.get(`/category/${id}`);
             setAllData(data.data)
         }catch(error){
-            console.log(error)
+            window.alert("문제가 발생하였습니다. 연결상태를 확인해주세요.")
+            //console.log(error)
         }
     }
 
@@ -98,8 +100,6 @@ export default function Artworks(){
         setCate(num);
         getData(num);
     },[])
-    
-    console.log(allData);
 
     return(
         <Container>

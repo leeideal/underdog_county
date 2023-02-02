@@ -245,12 +245,14 @@ export default function Artists(){
                     try{
                         sendImg(id, result2);
                     }catch(error){
-                        console.log(error)
+                        window.alert("문제가 발생하였습니다. 연결상태를 확인해주세요.")
+                        //console.log(error)
                     }
                 }
             )
         }catch(error){
-            console.log(error)
+            window.alert("문제가 발생하였습니다. 연결상태를 확인해주세요.")
+            //console.log(error)
         }
     }
 
@@ -265,7 +267,8 @@ export default function Artists(){
             const data = await API.get("/artists");
             setAllData(data.data)
         }catch(error){
-            console.log(error)
+            window.alert("문제가 발생하였습니다. 연결상태를 확인해주세요.")
+            //console.log(error)
         }
     }
 
@@ -302,7 +305,7 @@ export default function Artists(){
             </Box>
             <FooterBox>
                 <GoBack href="/admine/home">
-                    관리가 페이지로 돌아가기
+                    관리자 페이지로 돌아가기
                 </GoBack>
                 <SetNew onClick={(()=>setMake(prev=>!prev))}>
                     아티스트 등록하기
